@@ -43,5 +43,8 @@ The following animation demonstrates the application functionality:
 https://github.com/Alexslzr
 
 # Page
+https://alexslzr.github.io/Work-Day-Scheduler/Develop/
+
+
 
 
