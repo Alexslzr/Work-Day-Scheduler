@@ -1,19 +1,15 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+let currentHour = dayjs().format('HH')        
+let x = setInterval(function(){               //function that its running every 1000 miliseconds
+  $('#currentDay').text(dayjs().format('dddd, MMMM DD'))  //used to set the element with currentday id to the current day
 
-let currentHour = dayjs().format('HH')
-let x = setInterval(function(){
-  $('#currentDay').text(dayjs().format('dddd, MMMM DD'))
-
-  let currentHour = dayjs().format('HH')
+  let currentHour = dayjs().format('HH')      //used to get the current hour in 2digits format
 
 
-$('.time-block').addClass('past')
+$('.time-block').addClass('past')     //used to set all elements with time-block class with the class past
 
-  if(currentHour>9 && currentHour<18){
-    $('#'+currentHour).removeClass('past').addClass('present')
-  
+  if(currentHour>9 && currentHour<18){  
+    $('#'+currentHour).removeClass('past').addClass('present')    //if current hour same as id remove class past and add class present
+      //if currenthour its less than the id will remove class past and add the classs future
     if(currentHour<17){
       $('#17').removeClass('past').addClass('future')
     } 
@@ -59,7 +55,7 @@ let task17 = $('#input17')
 
 
 
-task9.text(localStorage.getItem('at9'))
+task9.text(localStorage.getItem('at9')) //add the stored data
 task10.text(localStorage.getItem('at10'))
 task11.text(localStorage.getItem('at11'))
 task12.text(localStorage.getItem('at12'))
@@ -73,15 +69,14 @@ task17.text(localStorage.getItem('at17'))
 $('#btn9').click(function(){
   if(task9.val() !=='' && task9.val()!==localStorage.getItem('at9')){
     localStorage.setItem('at9', task9.val())
-    /* $('#appoint').show(2000,function(){
+   /*  $('#appoint').show(2000,function(){  a diferent way to show the appoint saved in to local storage element
          $('#appoint').hide()
-    })
-    */ 
+    })*/ 
     appointAdded();
   }
   
-  let uwu=localStorage.getItem('at9')
-  task9.text(uwu)
+  let textStored=localStorage.getItem('at9')
+  task9.text(textStored)
 })
 
 $('#btn10').click(function(){
@@ -90,8 +85,8 @@ $('#btn10').click(function(){
     appointAdded();
   }
 
-  let uwu=localStorage.getItem('at10')
-  task10.text(uwu)
+  let textStored=localStorage.getItem('at10')
+  task10.text(textStored)
 })
 
 $('#btn11').click(function(){
@@ -100,8 +95,8 @@ $('#btn11').click(function(){
     appointAdded();
   }
 
-  let uwu=localStorage.getItem('at11')
-  task11.text(uwu)
+  let textStored=localStorage.getItem('at11')
+  task11.text(textStored)
 })
 
 $('#btn12').click(function(){
@@ -109,8 +104,8 @@ $('#btn12').click(function(){
     localStorage.setItem('at12', task12.val())
     appointAdded();
   }
-  let uwu=localStorage.getItem('at12')
-  task12.text(uwu)
+  let textStored=localStorage.getItem('at12')
+  task12.text(textStored)
 })
 
 $('#btn13').click(function(){
@@ -119,8 +114,8 @@ $('#btn13').click(function(){
     appointAdded();
   }
 
-    let uwu=localStorage.getItem('at13')
-    task13.text(uwu)
+    let textStored=localStorage.getItem('at13')
+    task13.text(textStored)
 })
 
 $('#btn14').click(function(){
@@ -129,8 +124,8 @@ $('#btn14').click(function(){
     appointAdded();
   }
 
-    let uwu=localStorage.getItem('at14')
-    task14.text(uwu)
+    let textStored=localStorage.getItem('at14')
+    task14.text(textStored)
 })
 
 $('#btn15').click(function(){
@@ -139,8 +134,8 @@ $('#btn15').click(function(){
     appointAdded();
   }
 
-    let uwu=localStorage.getItem('at15')
-    task15.text(uwu)
+    let textStored=localStorage.getItem('at15')
+    task15.text(textStored)
 })
 
 $('#btn16').click(function(){
@@ -149,8 +144,8 @@ $('#btn16').click(function(){
     appointAdded();
   }
 
-    let uwu=localStorage.getItem('at16')
-    task16.text(uwu)
+    let textStored=localStorage.getItem('at16')
+    task16.text(textStored)
 })
 
 $('#btn17').click(function(){
@@ -159,40 +154,21 @@ $('#btn17').click(function(){
     appointAdded();
   }
 
-  let uwu=localStorage.getItem('at17')
-  task17.text(uwu)
+  let textStored=localStorage.getItem('at17')
+  task17.text(textStored)
 })
 
 
-function  appointAdded(){
+function  appointAdded(){  //function used to show the apoint saved to local storage element 
   let time=1
   $('#appoint').show()
   let timer = setInterval(function(){
     time--;
-    if(time===0){
+    if(time===0){  //if time gets to 0 we clear the interval and hide again the element
       clearInterval(timer)
       $('#appoint').hide()
     }
   },1000)
 }
 
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
 
